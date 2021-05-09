@@ -100,36 +100,36 @@ for i in range(len(dep_c)):
     plt.savefig('pics/cov'+dep_c[i]+'.png')
     plt.close()
 
-nacional1_=var_c[0]+var_c[1]+var_c[2]+var_c[3]+var_c[4]+var_c[5]+var_c[6]+var_c[7]+var_c[8]
-nacional2_=var_mc[0]+var_mc[1]+var_mc[2]+var_mc[3]+var_mc[4]+var_mc[5]+var_mc[6]+var_mc[7]+var_mc[8]
-nacional3_=var_mm[0]+var_mm[1]+var_mm[2]+var_mm[3]+var_mm[4]+var_mm[5]+var_mm[6]+var_mm[7]+var_mm[8]
+# nacional1_=var_c[0]+var_c[1]+var_c[2]+var_c[3]+var_c[4]+var_c[5]+var_c[6]+var_c[7]+var_c[8]
+# nacional2_=var_mc[0]+var_mc[1]+var_mc[2]+var_mc[3]+var_mc[4]+var_mc[5]+var_mc[6]+var_mc[7]+var_mc[8]
+# nacional3_=var_mm[0]+var_mm[1]+var_mm[2]+var_mm[3]+var_mm[4]+var_mm[5]+var_mm[6]+var_mm[7]+var_mm[8]
 
 
-plt.figure(figsize=(45,38))
-plt.title('NUEVOS CASOS/DÍA A NIVEL NACIONAL'+'\n(último reporte en fuente: '+y_c[-1]+')\n',fontsize=80,fontproperties=prop)
-plt.plot(y_c,nacional1_,label='Nuevos Casos/día',linewidth=5,color=tableau20[0],linestyle='-',marker='.',markersize=7,markeredgecolor='red',markerfacecolor='r')
-plt.plot(y_c,nacional2_,label='Promedio 7 días',linewidth=15,color=tableau20[1],linestyle='-')
-plt.plot(y_c,nacional3_,label='Fallecimientos/día',linewidth=15,color=tableau20[7],linestyle='-')
+# plt.figure(figsize=(45,38))
+# plt.title('NUEVOS CASOS/DÍA A NIVEL NACIONAL'+'\n(último reporte en fuente: '+y_c[-1]+')\n',fontsize=80,fontproperties=prop)
+# plt.plot(y_c,nacional1_,label='Nuevos Casos/día',linewidth=5,color=tableau20[0],linestyle='-',marker='.',markersize=7,markeredgecolor='red',markerfacecolor='r')
+# plt.plot(y_c,nacional2_,label='Promedio 7 días',linewidth=15,color=tableau20[1],linestyle='-')
+# plt.plot(y_c,nacional3_,label='Fallecimientos/día',linewidth=15,color=tableau20[7],linestyle='-')
 
-bol1 = mpimg.imread('bol.jpg')
-imagebox1 = OffsetImage(bol1,zoom=2)
-firma1 = AnnotationBbox(imagebox1,(60,np.max(nacional1_)/1.5))
+# bol1 = mpimg.imread('bol.jpg')
+# imagebox1 = OffsetImage(bol1,zoom=2)
+# firma1 = AnnotationBbox(imagebox1,(60,np.max(nacional1_)/1.5))
 
-plt.legend(loc='upper left',fontsize=50)
-plt.yticks(fontsize=65,fontproperties=prop)
-plt.xticks(y_c[::28],fontsize=55,rotation=45,fontproperties=prop)
-plt.ylim(0,np.max(nacional1_))  
-plt.ylabel('Casos/día',fontsize=55,fontproperties=prop)
-plt.gca().yaxis.grid(linestyle='--',linewidth=0.5,dashes=(5,15))
-plt.gca().spines["top"].set_visible(False)    
-plt.gca().spines["bottom"].set_visible(True)    
-plt.gca().spines["right"].set_visible(False)    
-plt.gca().spines["left"].set_visible(False)  
-plt.gca().get_xaxis().tick_bottom()    
-plt.gca().get_yaxis().tick_left()
-plt.gca().add_artist(firma1)
-plt.text(1,1800,"Data source: https://github.com/mauforonda/covid19-bolivia"    
-       "\nAutor: Telegram Bot: @Bolivian_Bot"    
-       "\nNota: Histórico acumulado",fontsize=30,fontproperties=prop); 
-plt.savefig('pics/covNac.png')
-plt.close()
+# plt.legend(loc='upper left',fontsize=50)
+# plt.yticks(fontsize=65,fontproperties=prop)
+# plt.xticks(y_c[::28],fontsize=55,rotation=45,fontproperties=prop)
+# plt.ylim(0,np.max(nacional1_))  
+# plt.ylabel('Casos/día',fontsize=55,fontproperties=prop)
+# plt.gca().yaxis.grid(linestyle='--',linewidth=0.5,dashes=(5,15))
+# plt.gca().spines["top"].set_visible(False)    
+# plt.gca().spines["bottom"].set_visible(True)    
+# plt.gca().spines["right"].set_visible(False)    
+# plt.gca().spines["left"].set_visible(False)  
+# plt.gca().get_xaxis().tick_bottom()    
+# plt.gca().get_yaxis().tick_left()
+# plt.gca().add_artist(firma1)
+# plt.text(1,1800,"Data source: https://github.com/mauforonda/covid19-bolivia"    
+#        "\nAutor: Telegram Bot: @Bolivian_Bot"    
+#        "\nNota: Histórico acumulado",fontsize=30,fontproperties=prop); 
+# plt.savefig('pics/covNac.png')
+# plt.close()
