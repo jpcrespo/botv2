@@ -178,3 +178,4 @@ uac = [y_c[-1],y_v[-1]]
 np.save('estados.npy',estados)   #los valores de cada día actualizado y mostrar resumen.
 np.save('fechas.npy',uac)        #Guarda las últimas fechas donde se llenaron las fuentes. 
 
+

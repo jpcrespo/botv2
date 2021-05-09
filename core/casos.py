@@ -54,7 +54,7 @@ from matplotlib.offsetbox import TextArea, DrawingArea, OffsetImage, AnnotationB
 import matplotlib.image as mpimg
 from matplotlib import font_manager as fm, rcParams
 
-fpath = os.path.join(r'C:\Users\xaxe_\AppData\Local\Microsoft\Windows\Fonts\MonolisaSimpson-Regular.ttf')
+fpath = os.path.join(r'MonoLisaSimpson-Regular.ttf')
 prop = fm.FontProperties(fname=fpath)
 fname = os.path.split(fpath)[1]
 
