@@ -17,15 +17,18 @@ cd ..
 source bin/activate
 
 cd /home/pi/Desktop/telebot/botv2/core/
-python recopilador.py
+python vac.py
+python vacnac.py
+python casos.py
+python casosnac.py
+python ratevac.py
+python ratevecnac.py
 python notif.py
 
 git add covid19-bolivia/confirmados.csv covid19-bolivia/decesos.csv
 git add vacunas/datos/primera.csv vacunas/datos/segunda.csv
 git commit -m 'actualizando datos de la fuente'
 git push origin master
-
-#sudo rm -r covid19-bolivia vacunas __pycache__ ip.txt
 
 sudo rm -r covid19-bolivia vacunas 
 sudo rm ip.txt
