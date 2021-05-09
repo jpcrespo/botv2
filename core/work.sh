@@ -22,7 +22,7 @@ python vacnac.py
 python casos.py
 python casosnac.py
 python ratevac.py
-python ratevecnac.py
+python ratevacnac.py
 python notif.py
 
 git add covid19-bolivia/confirmados.csv covid19-bolivia/decesos.csv

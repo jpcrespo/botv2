@@ -170,8 +170,8 @@ for j in range(9):
 
 estados =  [[casos_dia[0],casos_dia[1],casos_dia[2],casos_dia[3],casos_dia[4],casos_dia[5],casos_dia[6],casos_dia[7],casos_dia[8]],
             [muertos_dia[0],muertos_dia[1],muertos_dia[2],muertos_dia[3],muertos_dia[4],muertos_dia[5],muertos_dia[6],muertos_dia[7],muertos_dia[8]],
-            [var_v1[3],var_v1[2],var_v1[7],var_v1[4],var_v1[6],var_v1[8],var_v1[1],var_v1[0],var_v1[5]],
-            [var_v2[3],var_v2[2],var_v2[7],var_v2[4],var_v2[6],var_v2[8],var_v2[1],var_v2[0],var_v2[5]]]
+            [var_v1[3,-1],var_v1[2,-1],var_v1[7,-1],var_v1[4,-1],var_v1[6,-1],var_v1[8,-1],var_v1[1,-1],var_v1[0,-1],var_v1[5,-1]],
+            [var_v2[3,-1],var_v2[2,-1],var_v2[7,-1],var_v2[4,-1],var_v2[6,-1],var_v2[8,-1],var_v2[1,-1],var_v2[0,-1],var_v2[5,-1]]]
 
 
 uac = [y_c[-1],y_v[-1]]
