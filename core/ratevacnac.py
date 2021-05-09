@@ -8,6 +8,9 @@ import matplotlib.pyplot as plt
 #datos vacunacion
 df1=pd.read_csv('vacunas/datos/primera.csv',sep=',').sort_values(by='fecha').set_index('fecha')
 df2=pd.read_csv('vacunas/datos/segunda.csv',sep=',').sort_values(by='fecha').set_index('fecha')
+df3=pd.read_csv('covid19-bolivia/confirmados.csv',sep=',').sort_values(by='Fecha').set_index('Fecha')
+df4=pd.read_csv('covid19-bolivia/decesos.csv',sep=',').sort_values(by='Fecha').set_index('Fecha')
+
 
 #ambas concentraciones de datos tienen distintos etiquetados.
 #se replican los ordenes en distintos vectores.
@@ -15,6 +18,8 @@ dep_v=['Beni','Chuquisaca','Cochabamba','La Paz','Oruro','Pando','Potosi','Santa
 
 data1 = df1.iloc[:,:].values.T
 data2 = df2.iloc[:,:].values.T
+data3 = df3.iloc[:,:].values.T
+data4 = df4.iloc[:,:].values.T
 
 var_v1=np.zeros((9,len(data1[0])))
 var_v2=np.zeros((9,len(data2[0])))
@@ -27,12 +32,14 @@ for j in range(9):
         var_v2[j,i]=data2[j,i]-data2[j,i-1]       
         
 y_v=df1.index.values       #Se recuperaron los datos de la fuente
+y_c=df3.index.values       #con el indice dado por las fechas del reporte
+
+
 
 v_v1 = df1.rolling(7,min_periods=1).mean()
 v_v2 = df2.rolling(7,min_periods=1).mean()
 mv_v1 = v_v1.iloc[:,:].values.T   
 mv_v2 = v_v2.iloc[:,:].values.T   
-
 
 mm_v1=np.zeros((9,len(data1[0])))
 mm_v2=np.zeros((9,len(data2[0])))
@@ -170,4 +177,5 @@ estados =  [[casos_dia[0],casos_dia[1],casos_dia[2],casos_dia[3],casos_dia[4],ca
 uac = [y_c[-1],y_v[-1]]
 np.save('estados.npy',estados)   #los valores de cada día actualizado y mostrar resumen.
 np.save('fechas.npy',uac)        #Guarda las últimas fechas donde se llenaron las fuentes. 
+
 
