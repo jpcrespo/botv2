@@ -2,7 +2,9 @@
 
 sudo supervisorctl stop telegrambot
 
+
 cd /home/pi/Desktop/telebot/botv2/core/
+
 
 sudo rm -r vacunas covid19-bolivia pics
 sudo rm estados.npy fechas.npy
@@ -24,7 +26,11 @@ git commit -m 'actualizando datos de la fuente'
 git push origin master
 
 #sudo rm -r covid19-bolivia vacunas __pycache__ ip.txt
+
+sudo rm -r covid19-bolivia vacunas 
+sudo rm ip.txt
+sudo rm -r __pycache__
+
 ifconfig > ip.txt
 sudo supervisorctl start telegrambot
-
 
