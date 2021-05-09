@@ -102,29 +102,29 @@ for i in range(len(tableau20)):
     r, g, b = tableau20[i]    
     tableau20[i] = (r / 255., g / 255., b / 255.)   
 
-for i in range(len(dep_v)):
-    plt.figure(figsize=(45,38))
-    plt.title('\nVACUNACIONES EN EL DEPARTAMENTO: '+dep_v[i]+'\n(último reporte en fuente: '+y_v[-1]+')\n',fontsize=80,fontproperties=prop)
-    plt.plot(y_v,data1[i],linewidth=15,color=tableau20[0])
-    plt.plot(y_v,data2[i],linewidth=15,color=tableau20[4])
-    plt.xticks(y_v[::7],fontsize=55,rotation=45,fontproperties=prop)
-    plt.ylabel('Vacunados ',fontsize=55,fontproperties=prop)
-    plt.yticks(fontsize=65,fontproperties=prop)
-    plt.ylim(0,np.max(data1[i])+5000)
-    plt.gca().yaxis.grid(linestyle='--',linewidth=0.5,dashes=(5,15))
-    plt.gca().spines["top"].set_visible(False)    
-    plt.gca().spines["bottom"].set_visible(True)    
-    plt.gca().spines["right"].set_visible(False)    
-    plt.gca().spines["left"].set_visible(False)  
-    plt.gca().get_xaxis().tick_bottom()    
-    plt.gca().get_yaxis().tick_left()
-    plt.text(len(data1[0]), data1[i,-1],'1er Dosis',fontsize=65,color=tableau20[0],fontproperties=prop)
-    plt.text(len(data2[0]), data2[i,-1],'2da Dosis',fontsize=65,color=tableau20[4],fontproperties=prop)
-    plt.text(0,30000,"Data source: https://github.com/mauforonda/vacunas"    
-        "\nAutor: Telegram Bot: @Bolivian_Bot"    
-        "\nNota: Histórico acumulado",fontsize=30,fontproperties=prop);
-    plt.savefig('pics/vac'+dep_v[i]+'.png')
-    plt.close()
+# for i in range(len(dep_v)):
+#     plt.figure(figsize=(45,38))
+#     plt.title('\nVACUNACIONES EN EL DEPARTAMENTO: '+dep_v[i]+'\n(último reporte en fuente: '+y_v[-1]+')\n',fontsize=80,fontproperties=prop)
+#     plt.plot(y_v,data1[i],linewidth=15,color=tableau20[0])
+#     plt.plot(y_v,data2[i],linewidth=15,color=tableau20[4])
+#     plt.xticks(y_v[::7],fontsize=55,rotation=45,fontproperties=prop)
+#     plt.ylabel('Vacunados ',fontsize=55,fontproperties=prop)
+#     plt.yticks(fontsize=65,fontproperties=prop)
+#     plt.ylim(0,np.max(data1[i])+5000)
+#     plt.gca().yaxis.grid(linestyle='--',linewidth=0.5,dashes=(5,15))
+#     plt.gca().spines["top"].set_visible(False)    
+#     plt.gca().spines["bottom"].set_visible(True)    
+#     plt.gca().spines["right"].set_visible(False)    
+#     plt.gca().spines["left"].set_visible(False)  
+#     plt.gca().get_xaxis().tick_bottom()    
+#     plt.gca().get_yaxis().tick_left()
+#     plt.text(len(data1[0]), data1[i,-1],'1er Dosis',fontsize=65,color=tableau20[0],fontproperties=prop)
+#     plt.text(len(data2[0]), data2[i,-1],'2da Dosis',fontsize=65,color=tableau20[4],fontproperties=prop)
+#     plt.text(0,30000,"Data source: https://github.com/mauforonda/vacunas"    
+#         "\nAutor: Telegram Bot: @Bolivian_Bot"    
+#         "\nNota: Histórico acumulado",fontsize=30,fontproperties=prop);
+#     plt.savefig('pics/vac'+dep_v[i]+'.png')
+#     plt.close()
 
 nacional1=data1[0]+data1[1]+data1[2]+data1[3]+data1[4]+data1[5]+data1[6]+data1[7]+data1[8]
 nacional2=data2[0]+data2[1]+data2[2]+data2[3]+data2[4]+data2[5]+data2[6]+data2[7]+data2[8]
