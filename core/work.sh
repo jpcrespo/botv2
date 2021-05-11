@@ -23,7 +23,7 @@ python casos.py
 python casosnac.py
 python ratevac.py
 python ratevacnac.py
-python notif.py
+
 
 git add covid19-bolivia/confirmados.csv covid19-bolivia/decesos.csv
 git add vacunas/datos/primera.csv vacunas/datos/segunda.csv
@@ -35,5 +35,6 @@ sudo rm ip.txt
 sudo rm -r __pycache__
 
 ifconfig > ip.txt
+python notif.py
 sudo supervisorctl start telegrambot
 
