@@ -427,7 +427,7 @@ def infodep_menu(m):
       bot.send_chat_action(cid,'upload_photo')
       bot.send_photo(cid, open('core/pics/covChuquisaca.png', 'rb'))
       bot.send_chat_action(cid,'upload_photo')
-     b ot.send_photo(cid, open('core/pics/vacChuquisaca.png', 'rb'),reply_markup=inf_dep)
+      bot.send_photo(cid, open('core/pics/vacChuquisaca.png', 'rb'),reply_markup=inf_dep)
 
     elif txt == 'Tarija':
         bot.send_message(cid,'Reporte Nacional díario, última fecha de actualización en la fuente: '+fechas[0])
@@ -557,6 +557,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print('\nExiting by user request.\n')
         sys.exit(0)
+
 
 
 
