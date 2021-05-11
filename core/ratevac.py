@@ -22,11 +22,11 @@ var_v1=np.zeros((9,len(data1[0])))
 var_v2=np.zeros((9,len(data2[0])))
 
 for j in range(9):
-    var_v1[j,0]=data1[j,0]/(_n*c_dep[j])
-    var_v2[j,0]=data2[j,0]/(_n*c_dep[j])
+    var_v1[j,0]=data1[j,0]/(_n*c_dep[j]/100)
+    var_v2[j,0]=data2[j,0]/(_n*c_dep[j]/100)
     for i in range(1,len(data1[0])):
-        var_v1[j,i]=(data1[j,i]-data1[j,i-1])/(_n*c_dep[j])
-        var_v2[j,i]=(data2[j,i]-data2[j,i-1])/(_n*c_dep[j])       
+        var_v1[j,i]=(data1[j,i]-data1[j,i-1])/(_n*c_dep[j]/100)
+        var_v2[j,i]=(data2[j,i]-data2[j,i-1])/(_n*c_dep[j]/100)       
         
 y_v=df1.index.values       #Se recuperaron los datos de la fuente
 
@@ -41,11 +41,11 @@ mm_v2=np.zeros((9,len(data2[0])))
 
 
 for j in range(9):
-    mm_v1[j,0]=mv_v1[j,0]/(_n*c_dep[j])
-    mm_v2[j,0]=mv_v2[j,0]/(_n*c_dep[j])
+    mm_v1[j,0]=mv_v1[j,0]/(_n*c_dep[j]/100)
+    mm_v2[j,0]=mv_v2[j,0]/(_n*c_dep[j]/100)
     for i in range(1,len(data1[0])):
-        mm_v1[j,i]=(mv_v1[j,i]-mv_v1[j,i-1])/(_n*c_dep[j])
-        mm_v2[j,i]=(mv_v2[j,i]-mv_v2[j,i-1])/(_n*c_dep[j])
+        mm_v1[j,i]=(mv_v1[j,i]-mv_v1[j,i-1])/(_n*c_dep[j]/100)
+        mm_v2[j,i]=(mv_v2[j,i]-mv_v2[j,i-1])/(_n*c_dep[j]/100)
 
 plt.style.use('dark_background')
 
@@ -57,9 +57,6 @@ fpath = os.path.join(r'MonoLisaSimpson-Regular.ttf')
 prop = fm.FontProperties(fname=fpath)
 fname = os.path.split(fpath)[1]
 
-
-bol = mpimg.imread('bol.jpg')
-imagebox = OffsetImage(bol,zoom=2)
 
 # These are the "Tableau 20" colors as RGB.    
 tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),    
