@@ -13,8 +13,6 @@ Indicadores:
 -> tasa de fallecimientos nuevos por día, podría identificar el saturamiento
 del sistema de salud si llega a converger con la tasa de nuevos por día.
     Se muestran en el mismo gráfico para poder hacer la comparativa.
-
-
 2. Curva de vacunación acumulada. Estas podrían ser buen indicador de metas 
 donde faltaria sumar la información  obtjetivo.
 

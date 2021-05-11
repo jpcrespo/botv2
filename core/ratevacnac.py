@@ -4,6 +4,7 @@ import numpy as np
 np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)      
 import matplotlib.pyplot as plt
 
+_n=1151.31 # factor de correción para llevar a 10^4 hab
 
 #datos vacunacion
 df1=pd.read_csv('vacunas/datos/primera.csv',sep=',').sort_values(by='fecha').set_index('fecha')
@@ -25,11 +26,11 @@ var_v1=np.zeros((9,len(data1[0])))
 var_v2=np.zeros((9,len(data2[0])))
 
 for j in range(9):
-    var_v1[j,0]=data1[j,0]
-    var_v2[j,0]=data2[j,0]
+    var_v1[j,0]=data1[j,0]/_n
+    var_v2[j,0]=data2[j,0]/_n
     for i in range(1,len(data1[0])):
-        var_v1[j,i]=data1[j,i]-data1[j,i-1]
-        var_v2[j,i]=data2[j,i]-data2[j,i-1]       
+        var_v1[j,i]=(data1[j,i]-data1[j,i-1])/_n
+        var_v2[j,i]=(data2[j,i]-data2[j,i-1])/_n       
         
 y_v=df1.index.values       #Se recuperaron los datos de la fuente
 y_c=df3.index.values       #con el indice dado por las fechas del reporte
@@ -46,11 +47,11 @@ mm_v2=np.zeros((9,len(data2[0])))
 
 
 for j in range(9):
-    mm_v1[j,0]=mv_v1[j,0]
-    mm_v2[j,0]=mv_v2[j,0]
+    mm_v1[j,0]=mv_v1[j,0]/_n
+    mm_v2[j,0]=mv_v2[j,0]/_n
     for i in range(1,len(data1[0])):
-        mm_v1[j,i]=mv_v1[j,i]-mv_v1[j,i-1]
-        mm_v2[j,i]=mv_v2[j,i]-mv_v2[j,i-1]
+        mm_v1[j,i]=(mv_v1[j,i]-mv_v1[j,i-1])/_n
+        mm_v2[j,i]=(mv_v2[j,i]-mv_v2[j,i-1])/_n
 
 plt.style.use('dark_background')
 
@@ -63,8 +64,6 @@ prop = fm.FontProperties(fname=fpath)
 fname = os.path.split(fpath)[1]
 
 
-bol = mpimg.imread('bol.jpg')
-imagebox = OffsetImage(bol,zoom=2)
 
 # These are the "Tableau 20" colors as RGB.    
 tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),    
@@ -80,46 +79,23 @@ for i in range(len(tableau20)):
 
 
 
-# for i in range(len(dep_v)):
-#     plt.figure(figsize=(45,38))
-#     plt.title('TASA DE VACUNACIÓN EN EL DEPARTAMENTO: '+dep_v[i]+'\n(último reporte en fuente: '+y_v[-1]+')\n',fontsize=80,fontproperties=prop)
-#     plt.plot(y_v,mm_v1[i],label='Promedio 7 días',linewidth=15,color=tableau20[1],linestyle='-')
-#     plt.plot(y_v,mm_v2[i],label='Promedio 7 días',linewidth=15,color=tableau20[5],linestyle='-')
-#     plt.xticks(y_v[::7],fontsize=55,rotation=45,fontproperties=prop)
-#     plt.ylabel('Vacunados/día',fontsize=55,fontproperties=prop)
-#     plt.yticks(fontsize=65,fontproperties=prop)
-#     plt.ylim(0,np.max(mm_v1[i]))
-#     plt.gca().yaxis.grid(linestyle='--',linewidth=0.5,dashes=(5,15))
-#     plt.gca().spines["top"].set_visible(False)    
-#     plt.gca().spines["bottom"].set_visible(True)    
-#     plt.gca().spines["right"].set_visible(False)    
-#     plt.gca().spines["left"].set_visible(False)  
-#     plt.gca().get_xaxis().tick_bottom()    
-#     plt.gca().get_yaxis().tick_left()
-#     plt.text(len(data1[0]), mm_v1[i,-1],'1er Dosis',fontsize=65,color=tableau20[0])
-#     plt.text(len(data2[0]), mm_v2[i,-1],'2da Dosis',fontsize=65,color=tableau20[4])
-#     plt.text(0,np.max(mm_v1[i])/2,"Data source: https://github.com/mauforonda/vacunas"    
-#          "\nAutor: Telegram Bot: @Bolivian_Bot"    
-#          "\nNota: Histórico acumulado", fontsize=30)  
-#     plt.savefig('pics/ratevac'+dep_v[i]+'.png')
-#     plt.close()
 
-nac_v1 = mm_v2[0]+mm_v1[1]+mm_v1[2]+mm_v1[3]+mm_v1[4]+mm_v1[5]+mm_v1[6]+mm_v1[7]+mm_v1[8]
+nac_v1 = mm_v1[0]+mm_v1[1]+mm_v1[2]+mm_v1[3]+mm_v1[4]+mm_v1[5]+mm_v1[6]+mm_v1[7]+mm_v1[8]
 nac_v2 = mm_v2[0]+mm_v2[1]+mm_v2[2]+mm_v2[3]+mm_v2[4]+mm_v2[5]+mm_v2[6]+mm_v2[7]+mm_v2[8]
 
 bol2 = mpimg.imread('bol.jpg')
-imagebox2 = OffsetImage(bol2,zoom=2)
-firma2 = AnnotationBbox(imagebox2,(10,np.max(nac_v1)/1.7))
+imagebox2 = OffsetImage(bol2,zoom=3)
+firma2 = AnnotationBbox(imagebox2,(10,np.max(nac_v1)/1.5))
 
-plt.figure(figsize=(45,38))
-plt.title('\nTasa de Vacunación Nacional.'+'\n(último reporte en fuente: '+y_v[-1]+')\n',fontsize=75,fontproperties=prop)
+plt.figure(figsize=(90,60))
+plt.title('\nTasa de Vacunación Nacional cada 10\'000 HAB' +'\n(último reporte en fuente: '+y_v[-1]+')\n',fontsize=150,fontproperties=prop)
 plt.plot(y_v,nac_v1,label='Promedio de 7 días - 1 Dosis',linewidth=15,color=tableau20[1],linestyle='-')
 plt.plot(y_v,nac_v2,label='Promedio de 7 días - 2 Dosis',linewidth=15,color=tableau20[5],linestyle='-')
-plt.xticks(y_v[::7],fontsize=55,rotation=45,fontproperties=prop)
-plt.ylabel('\nVacunados/día\n',fontsize=55,fontproperties=prop)
-plt.yticks(fontsize=65,fontproperties=prop)
+plt.xticks(y_v[::7],fontsize=80,rotation=45,fontproperties=prop)
+plt.ylabel('\nVacunados/día\n',fontsize=85,fontproperties=prop)
+plt.yticks(fontsize=180,fontproperties=prop)
 plt.ylim(0,np.max(nac_v1))
-plt.gca().yaxis.grid(linestyle='--',linewidth=0.5,dashes=(5,15))
+plt.gca().yaxis.grid(linestyle='--',linewidth=3,dashes=(5,15))
 plt.gca().spines["top"].set_visible(False)    
 plt.gca().spines["bottom"].set_visible(True)    
 plt.gca().spines["right"].set_visible(False)    
@@ -127,11 +103,11 @@ plt.gca().spines["left"].set_visible(False)
 plt.gca().get_xaxis().tick_bottom()    
 plt.gca().get_yaxis().tick_left()
 plt.gca().add_artist(firma2)
-plt.text(len(y_v)-4, nac_v1[-1]+1000,'1er Dosis',fontsize=65,color=tableau20[1],fontproperties=prop)
-plt.text(len(y_v)-4, nac_v2[-1]+1000,'2da Dosis',fontsize=65,color=tableau20[5],fontproperties=prop)
-plt.text(0,15000,"Data source: https://github.com/mauforonda/vacunas"    
+plt.text(len(y_v), nac_v1[-1],'1er Dosis',fontsize=85,color=tableau20[1],fontproperties=prop)
+plt.text(len(y_v), nac_v2[-1],'2da Dosis',fontsize=85,color=tableau20[5],fontproperties=prop)
+plt.text(0,np.max(nac_v1)/2,"Data source: https://github.com/mauforonda/vacunas"    
          "\nAutor: @Bolivian_Bot Telegram"    
-         "\nNota: Histórico acumulado.", fontsize=30,fontproperties=prop);  
+         "\nNota: Histórico acumulado.", fontsize=50,fontproperties=prop);  
 plt.savefig('pics/ratevacNac.png')
 plt.close()
 
