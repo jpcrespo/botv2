@@ -64,3 +64,6 @@ def getMessage():
 
 
 
+
+flag_date = '11/5/2021'
+act_mss = '11/5/2021-10:14'
