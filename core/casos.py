@@ -99,5 +99,5 @@ for i in range(len(dep_c)):
        "\nAutor: Telegram Bot: @Bolivian_Bot"    
        "\nNota: Histórico acumulado",fontsize=35,fontproperties=prop,color=tableau20[1]);
     plt.savefig('pics/cov'+dep_c[i]+'.png')
-    plt.close()
+    plt.close(fig)
 
