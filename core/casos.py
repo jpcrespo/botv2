@@ -69,7 +69,7 @@ for i in range(len(tableau20)):
     r, g, b = tableau20[i]    
     tableau20[i] = (r / 255., g / 255., b / 255.)   
 
-for i in range(len(dep_c)):
+for i in range(1): #len(dep_c)):
     plt.figure(figsize=(90,60))
     plt.title('NUEVOS CASOS/DÍA POR 100\'000 HAB EN EL DEPARTAMENTO: '+dep_c[i]+'\n(último reporte en fuente: '+y_c[-1]+')\n',fontsize=150,fontproperties=prop)
     plt.plot(y_c,var_c[i],label='Nuevos Casos/día',linewidth=5,color=tableau20[0],linestyle='-',marker='.', markersize=15,markeredgecolor='red',markerfacecolor='r')
