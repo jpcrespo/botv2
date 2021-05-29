@@ -49,7 +49,7 @@ for j in range(9):
         var_mc[j,i]=mean_dc[j,i]-mean_dc[j,i-1]
         var_mm[j,i]=mean_dm[j,i]-mean_dm[j,i-1]
 
-plt.style.use('dark_background')
+#plt.style.use('dark_background')
 
 from matplotlib.offsetbox import TextArea, DrawingArea, OffsetImage, AnnotationBbox
 import matplotlib.image as mpimg
@@ -61,15 +61,19 @@ fname = os.path.split(fpath)[1]
 
 
 bol = mpimg.imread('bol.jpg')
-imagebox = OffsetImage(bol,zoom=3)
-firma = AnnotationBbox(imagebox,(50,18))
+imagebox = OffsetImage(bol,zoom=1)
+firma = AnnotationBbox(imagebox,(len(y_c)/2,25))
+
 
 # These are the "Tableau 20" colors as RGB.    
-tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),    
-             (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),    
-             (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),    
-             (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),    
-             (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]    
+tableau20 = [(48,48,48), (240,240,240), (59,170,6), (61,167,249),    
+             (230,0,0)]    
+
+             #1[0] fondo plomo
+             #2    blanco de titulos
+             #3    rojo neon puntos
+             #4    verdes
+             #5    celestes
   
 # Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.    
 for i in range(len(tableau20)):    
@@ -82,17 +86,23 @@ nacional2_=var_mc[0]+var_mc[1]+var_mc[2]+var_mc[3]+var_mc[4]+var_mc[5]+var_mc[6]
 nacional3_=var_mm[0]+var_mm[1]+var_mm[2]+var_mm[3]+var_mm[4]+var_mm[5]+var_mm[6]+var_mm[7]+var_mm[8]
 
 
-plt.figure(figsize=(90,60))
-plt.title('\nNUEVOS CASOS/DÍA POR 100\'000 HAB A NIVEL NACIONAL'+'\n(último reporte en fuente: '+y_c[-1]+')\n',fontsize=150,fontproperties=prop)
-plt.plot(y_c,nacional1_,label='Nuevos Casos/día',linewidth=5,color=tableau20[0],linestyle='-',marker='.',markersize=15,markeredgecolor='red',markerfacecolor='r')
-plt.plot(y_c,nacional2_,label='Promedio 7 días',linewidth=15,color=tableau20[1],linestyle='-')
-plt.plot(y_c,nacional3_,label='Fallecimientos/día',linewidth=15,color=tableau20[7],linestyle='-')
-plt.legend(loc='upper left',fontsize=80)
-plt.yticks(fontsize=100,fontproperties=prop)
-plt.xticks(y_c[::28],fontsize=80,rotation=45,fontproperties=prop)
+fig = plt.figure(figsize=(35,25))
+
+#Color del fondo
+fig.patch.set_facecolor(tableau20[0])
+plt.axes().patch.set_facecolor(tableau20[0])
+
+plt.subplots_adjust(top=0.80)
+plt.title('\nNUEVOS CASOS/DÍA POR 100\'000 HAB A NIVEL NACIONAL'+'\n(último reporte en fuente: '+y_c[-1]+')\n',fontsize=75,fontproperties=prop,color=tableau20[1])
+plt.plot(y_c,nacional1_,label='Nuevos Casos/día',linewidth=5,color=tableau20[2],linestyle='-',marker='.',markersize=10,markeredgecolor='yellow' ,markerfacecolor='r')
+plt.plot(y_c,nacional2_,label='Promedio 7 días',linewidth=5,color=tableau20[3],linestyle='-')
+plt.plot(y_c,nacional3_,label='Fallecimientos/día',linewidth=5,color=tableau20[4],linestyle='-')
+plt.legend(loc='upper left',fontsize=50)
 plt.ylim(0,np.max(nacional2_)+5)  
-plt.ylabel('Casos/día',fontsize=85,fontproperties=prop)
-plt.gca().yaxis.grid(linestyle='--',linewidth=3,dashes=(5,15))
+plt.yticks(fontsize=50,fontproperties=prop,color=tableau20[1])
+plt.xticks(y_c[::28],fontsize=35,rotation=45,fontproperties=prop,color=tableau20[1])
+plt.ylabel('Casos/día',fontsize=60,fontproperties=prop,color=tableau20[1])
+plt.gca().yaxis.grid(linestyle='--',linewidth=1,dashes=(5,15))
 plt.gca().spines["top"].set_visible(False)    
 plt.gca().spines["bottom"].set_visible(True)    
 plt.gca().spines["right"].set_visible(False)    
@@ -100,8 +110,9 @@ plt.gca().spines["left"].set_visible(False)
 plt.gca().get_xaxis().tick_bottom()    
 plt.gca().get_yaxis().tick_left()
 plt.gca().add_artist(firma)
+plt.subplots_adjust(bottom=0.2)
 plt.text(0,-8,"Data source: https://github.com/mauforonda/covid19-bolivia"    
        "\nAutor: Telegram Bot: @Bolivian_Bot"    
-       "\nNota: Histórico acumulado",fontsize=50,fontproperties=prop); 
+       "\nNota: Histórico acumulado",fontsize=35,fontproperties=prop,color=tableau20[1]); 
 plt.savefig('pics/covNac.png')
 
