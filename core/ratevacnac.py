@@ -4,7 +4,7 @@ import numpy as np
 np.warnings.filterwarnings('ignore', category=np.VisibleDeprecationWarning)      
 import matplotlib.pyplot as plt
 
-_n=115.131 # factor de correción para llevar a 10^4 hab
+_n=1151.31 # factor de correción para llevar a 10^4 hab
 
 #datos vacunacion
 df1=pd.read_csv('vacunas/datos/primera.csv',sep=',').sort_values(by='fecha').set_index('fecha')
