@@ -119,7 +119,7 @@ plt.gca().add_artist(firma)
 plt.subplots_adjust(bottom=0.3)
 plt.text(len(y_v), nac_v1[-1],'1er Dosis',fontsize=35,color=tableau20[3],fontproperties=prop)
 plt.text(len(y_v), nac_v2[-1],'2da Dosis',fontsize=35,color=tableau20[2],fontproperties=prop)
-plt.text(0,-180,"Data source: https://github.com/mauforonda/vacunas"    
+plt.text(0,-18,"Data source: https://github.com/mauforonda/vacunas"    
          "\nAutor: @Bolivian_Bot Telegram"    
          "\nNota: Histórico acumulado.", fontsize=35,fontproperties=prop,color=tableau20[1]);  
 plt.savefig('pics/ratevacNac.png')
