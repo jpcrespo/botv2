@@ -60,10 +60,6 @@ prop = fm.FontProperties(fname=fpath)
 fname = os.path.split(fpath)[1]
 
 
-bol = mpimg.imread('bol.jpg')
-imagebox = OffsetImage(bol,zoom=1)
-firma = AnnotationBbox(imagebox,(len(y_c)/2,25))
-
 
 # These are the "Tableau 20" colors as RGB.    
 tableau20 = [(48,48,48), (240,240,240), (59,170,6), (61,167,249),    
@@ -85,6 +81,12 @@ nacional1_=var_c[0]+var_c[1]+var_c[2]+var_c[3]+var_c[4]+var_c[5]+var_c[6]+var_c[
 nacional2_=var_mc[0]+var_mc[1]+var_mc[2]+var_mc[3]+var_mc[4]+var_mc[5]+var_mc[6]+var_mc[7]+var_mc[8]
 nacional3_=var_mm[0]+var_mm[1]+var_mm[2]+var_mm[3]+var_mm[4]+var_mm[5]+var_mm[6]+var_mm[7]+var_mm[8]
 
+bol = mpimg.imread('bol.jpg')
+imagebox = OffsetImage(bol,zoom=1)
+firma = AnnotationBbox(imagebox,(len(y_c)/2,25))
+
+
+
 
 fig = plt.figure(figsize=(35,25))
 
@@ -100,7 +102,7 @@ plt.plot(y_c,nacional3_,label='Fallecimientos/día',linewidth=5,color=tableau20[
 plt.legend(loc='upper left',fontsize=50)
 plt.ylim(0,np.max(nacional2_)+5)  
 plt.yticks(fontsize=50,fontproperties=prop,color=tableau20[1])
-plt.xticks(y_c[::28],fontsize=35,rotation=45,fontproperties=prop,color=tableau20[1])
+plt.xticks(y_c[::30],fontsize=35,rotation=45,fontproperties=prop,color=tableau20[1])
 plt.ylabel('Casos/día',fontsize=60,fontproperties=prop,color=tableau20[1])
 plt.gca().yaxis.grid(linestyle='--',linewidth=1,dashes=(5,15))
 plt.gca().spines["top"].set_visible(False)    
@@ -110,6 +112,7 @@ plt.gca().spines["left"].set_visible(False)
 plt.gca().get_xaxis().tick_bottom()    
 plt.gca().get_yaxis().tick_left()
 plt.gca().add_artist(firma)
+
 plt.subplots_adjust(bottom=0.2)
 plt.text(0,-8,"Data source: https://github.com/mauforonda/covid19-bolivia"    
        "\nAutor: Telegram Bot: @Bolivian_Bot"    
