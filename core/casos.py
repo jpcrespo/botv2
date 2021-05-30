@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 
 _n=115.131 
 #datos casos diarios
-df3=pd.read_csv('covid19-bolivia/confirmados.csv',sep=',').sort_values(by='Fecha').set_index('Fecha')
-df4=pd.read_csv('covid19-bolivia/decesos.csv',sep=',').sort_values(by='Fecha').set_index('Fecha')
+df3=pd.read_csv('covid19-bolivia/confirmados.csv',sep=',').sort_values(by='Fecha').set_index('Fecha').fillna(0)
+df4=pd.read_csv('covid19-bolivia/decesos.csv',sep=',').sort_values(by='Fecha').set_index('Fecha').fillna(0)
 
 
 #ambas concentraciones de datos tienen distintos etiquetados.
@@ -78,15 +78,15 @@ for i in range(len(dep_c)):
     fig.patch.set_facecolor(tableau20[0])
     plt.axes().patch.set_facecolor(tableau20[0])
     plt.subplots_adjust(top=0.80)
-    plt.title('NUEVOS CASOS/DÍA POR 100\'000 HAB EN EL DEPARTAMENTO:\n'+dep_c[i]+'\n(último reporte en fuente: '+y_c[-1]+')\n',fontsize=65,fontproperties=prop,color=tableau20[1])
+    plt.title('Nuevos casos/día cada 100\'000 HAB en el Dep.:\n'+dep_c[i]+'\n(último reporte en fuente: '+y_c[-1]+')\n',fontsize=75,fontproperties=prop,color=tableau20[1])
     plt.plot(y_c,var_c[i],label='Nuevos Casos/día',linewidth=5,color=tableau20[2],linestyle='-',marker='.', markersize=15,markeredgecolor='yellow',markerfacecolor='r')
     plt.plot(y_c,var_mc[i],label='Promedio 7 días',linewidth=5,color=tableau20[3],linestyle='-')
     plt.plot(y_c,var_m[i],label='Fallecimientos/día',linewidth=5,color=tableau20[4],linestyle='-')
     plt.legend(loc='upper left',fontsize=50)
     plt.yticks(fontsize=50,fontproperties=prop,color=tableau20[1])
-    plt.xticks(y_c[::28],fontsize=35,rotation=45,fontproperties=prop,color=tableau20[1])
-    plt.ylim(0,2*np.max(var_mc[i]))  
-    plt.ylabel('Casos/día',fontsize=60,fontproperties=prop,color=tableau20[1])
+    plt.xticks(y_c[::28],fontsize=40,rotation=45,fontproperties=prop,color=tableau20[1])
+   # plt.ylim(0,2*np.max(var_mc[i]))  
+    plt.ylabel('\nCasos/día\n',fontsize=60,fontproperties=prop,color=tableau20[1])
     plt.gca().yaxis.grid(linestyle='--',linewidth=1,dashes=(5,15))
     plt.gca().spines["top"].set_visible(False)    
     plt.gca().spines["bottom"].set_visible(True)    
@@ -94,10 +94,10 @@ for i in range(len(dep_c)):
     plt.gca().spines["left"].set_visible(False)  
     plt.gca().get_xaxis().tick_bottom()    
     plt.gca().get_yaxis().tick_left()
-    plt.subplots_adjust(bottom=0.2)
-    plt.text(0,-13,"Data source: https://github.com/mauforonda/covid19-bolivia"    
+    plt.subplots_adjust(bottom=0.25)
+    plt.text(0,-1*np.max(var_c[i])/2,"Data source: https://github.com/mauforonda/covid19-bolivia"    
        "\nAutor: Telegram Bot: @Bolivian_Bot"    
-       "\nNota: Histórico acumulado",fontsize=35,fontproperties=prop,color=tableau20[1]);
+       "\nNota: Histórico acumulado",fontsize=40,fontproperties=prop,color=tableau20[1]);
     plt.savefig('pics/cov'+dep_c[i]+'.png')
     plt.close(fig)
 

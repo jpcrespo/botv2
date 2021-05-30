@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 _n=115.131 # factor de correción para llevar a 10^4 hab
 
 #datos vacunacion
-df1=pd.read_csv('vacunas/datos/primera.csv',sep=',').sort_values(by='fecha').set_index('fecha')
-df2=pd.read_csv('vacunas/datos/segunda.csv',sep=',').sort_values(by='fecha').set_index('fecha')
+df1=pd.read_csv('vacunas/datos/primera.csv',sep=',').sort_values(by='fecha').set_index('fecha').fillna(0)
+df2=pd.read_csv('vacunas/datos/segunda.csv',sep=',').sort_values(by='fecha').set_index('fecha').fillna(0)
 
 #ambas concentraciones de datos tienen distintos etiquetados.
 #se replican los ordenes en distintos vectores.
@@ -79,7 +79,7 @@ for i in range(len(dep_v)):
     plt.title('TASA DE VACUNACIÓN CADA 100\'000 HAB EN EL DEP:\n'+dep_v[i]+'\n(último reporte en fuente: '+y_v[-1]+')\n',fontsize=75,fontproperties=prop,color=tableau20[1])
     plt.plot(y_v,mm_v1[i],label='Promedio 7 días',linewidth=5,color=tableau20[3],linestyle='-')
     plt.plot(y_v,mm_v2[i],label='Promedio 7 días',linewidth=5,color=tableau20[2],linestyle='-')
-    plt.xticks(y_v[::7],fontsize=50,rotation=45,fontproperties=prop,color=tableau20[1])
+    plt.xticks(y_v[::7],fontsize=40,rotation=45,fontproperties=prop,color=tableau20[1])
     plt.ylabel('\nVacunados/día\n',fontsize=60,fontproperties=prop,color=tableau20[1])
     plt.yticks(fontsize=50,fontproperties=prop,color=tableau20[1])
     #plt.ylim(0,np.max(mm_v1[i]))
@@ -93,9 +93,9 @@ for i in range(len(dep_v)):
     plt.subplots_adjust(bottom=0.3)
     plt.text(len(data1[0]), mm_v1[i,-1],'1er Dosis',fontsize=35,color=tableau20[3])
     plt.text(len(data2[0]), mm_v2[i,-1],'2da Dosis',fontsize=35,color=tableau20[2])
-    plt.text(0,-180,"Data source: https://github.com/mauforonda/vacunas"    
+    plt.text(0,-1*np.max(mm_v1[i])/1.5,"Data source: https://github.com/mauforonda/vacunas"    
          "\nAutor: Telegram Bot: @Bolivian_Bot"    
-         "\nNota: Histórico acumulado", fontsize=50,fontproperties=prop,color=tableau20[1])  
+         "\nNota: Histórico acumulado", fontsize=40,fontproperties=prop,color=tableau20[1])  
     plt.savefig('pics/ratevac'+dep_v[i]+'.png')
     plt.close()
 

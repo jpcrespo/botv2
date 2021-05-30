@@ -104,9 +104,9 @@ for i in range(len(dep_v)):
     plt.title('\nVacunaciones cada 10\'000 HAB en el Dep.:\n'+dep_v[i]+'\n(último reporte en fuente: '+y_v[-1]+')\n',fontsize=75,fontproperties=prop,color=tableau20[1])
     plt.plot(y_v,var_v1[i],linewidth=5,color=tableau20[2])
     plt.plot(y_v,var_v2[i],linewidth=5,color=tableau20[3])
-    plt.xticks(y_v[::7],fontsize=50,rotation=45,fontproperties=prop,color=tableau20[1])
+    plt.xticks(y_v[::7],fontsize=40,rotation=45,fontproperties=prop,color=tableau20[1])
     plt.ylabel('\nVacunados\n',fontsize=60,fontproperties=prop,color=tableau20[1])
-    plt.yticks(fontsize=50,fontproperties=prop,color=tableau20[1])
+    plt.yticks(fontsize=40,fontproperties=prop,color=tableau20[1])
     #plt.ylim(0,np.max(data1[i])+5000)
     plt.gca().yaxis.grid(linestyle='--',linewidth=1,dashes=(5,15))
     plt.gca().spines["top"].set_visible(False)    
@@ -119,8 +119,8 @@ for i in range(len(dep_v)):
 
     plt.text(y_v[-1],var_v1[i,-1]+20,'1er Dosis',fontsize=35,color=tableau20[2],fontproperties=prop)
     plt.text(y_v[-1],var_v2[i,-1]+20,'2da Dosis',fontsize=35,color=tableau20[3],fontproperties=prop)
-    plt.text(0,-1/1.75*np.max(var_v1[i]),"Data source: https://github.com/mauforonda/vacunas"    
+    plt.text(0,-1*np.max(var_v1[i])/2,"Data source: https://github.com/mauforonda/vacunas"    
         "\nAutor: Telegram Bot: @Bolivian_Bot"    
-        "\nNota: Histórico acumulado",fontsize=35,fontproperties=prop,color=tableau20[1]);
+        "\nNota: Histórico acumulado",fontsize=40,fontproperties=prop,color=tableau20[1]);
     plt.savefig('pics/vac'+dep_v[i]+'.png')
     plt.close()
