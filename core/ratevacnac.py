@@ -119,7 +119,7 @@ plt.gca().add_artist(firma)
 plt.subplots_adjust(bottom=0.3)
 plt.text(len(y_v), nac_v1[-1],'1er Dosis',fontsize=35,color=tableau20[3],fontproperties=prop)
 plt.text(len(y_v), nac_v2[-1],'2da Dosis',fontsize=35,color=tableau20[2],fontproperties=prop)
-plt.text(0,-180,"Data source: https://github.com/mauforonda/vacunas"    
+plt.text(0,-18,"Data source: https://github.com/mauforonda/vacunas"    
          "\nAutor: @Bolivian_Bot Telegram"    
          "\nNota: Histórico acumulado.", fontsize=35,fontproperties=prop,color=tableau20[1]);  
 plt.savefig('pics/ratevacNac.png')
@@ -160,8 +160,8 @@ for j in range(9):
 
 estados =  [[casos_dia[0],casos_dia[1],casos_dia[2],casos_dia[3],casos_dia[4],casos_dia[5],casos_dia[6],casos_dia[7],casos_dia[8]],
             [muertos_dia[0],muertos_dia[1],muertos_dia[2],muertos_dia[3],muertos_dia[4],muertos_dia[5],muertos_dia[6],muertos_dia[7],muertos_dia[8]],
-            [var_v1[3,-1],var_v1[2,-1],var_v1[7,-1],var_v1[4,-1],var_v1[6,-1],var_v1[8,-1],var_v1[1,-1],var_v1[0,-1],var_v1[5,-1]],
-            [var_v2[3,-1],var_v2[2,-1],var_v2[7,-1],var_v2[4,-1],var_v2[6,-1],var_v2[8,-1],var_v2[1,-1],var_v2[0,-1],var_v2[5,-1]]]
+            [_n*var_v1[3,-1],_n*var_v1[2,-1],_n*var_v1[7,-1],_n*var_v1[4,-1],_n*var_v1[6,-1],_n*var_v1[8,-1],_n*var_v1[1,-1],_n*var_v1[0,-1],_n*var_v1[5,-1]],
+            [_n*var_v2[3,-1],_n*var_v2[2,-1],_n*var_v2[7,-1],_n*var_v2[4,-1],_n*var_v2[6,-1],_n*var_v2[8,-1],_n*var_v2[1,-1],_n*var_v2[0,-1],_n*var_v2[5,-1]]]
 
 
 uac = [y_c[-1],y_v[-1]]
