@@ -169,3 +169,4 @@ np.save('estados.npy',estados)   #los valores de cada día actualizado y mostrar
 np.save('fechas.npy',uac)        #Guarda las últimas fechas donde se llenaron las fuentes. 
 
 
+
