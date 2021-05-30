@@ -127,45 +127,46 @@ plt.close()
 
 
 
-# from datetime import date
-# from datetime import datetime
-# now = datetime.now()
+from datetime import date
+from datetime import datetime
+now = datetime.now()
 
-# with open('datos.py', 'a') as f:
-#     mss=str(now.day)+'/'+str(now.month)+'/'+str(now.year)
-#     mss1=str(now.day)+'/'+str(now.month)+'/'+str(now.year)+'-'+str(now.hour)+":"+str(now.minute)
-#     f.write("\n")
-#     f.write("flag_date = '" )    #ultima actualización de consulta a la fuente y generación de imagenes
-#     f.write(mss)
-#     f.write("'")
-#     f.write("\n")
-#     f.write("act_mss = '")          #las notificaciones que manda al admin con hora de ejecución.
-#     f.write(mss1)
-#     f.write("'")
-
-
-# #se guarda un array actualizado con los datos: 
-# # casos_dia     
-# # muertos_día    
-# # vacunados_1    
-# # vacunados_2    
+with open('datos.py', 'a') as f:
+    mss=str(now.day)+'/'+str(now.month)+'/'+str(now.year)
+    mss1=str(now.day)+'/'+str(now.month)+'/'+str(now.year)+'-'+str(now.hour)+":"+str(now.minute)
+    f.write("\n")
+    f.write("flag_date = '" )    #ultima actualización de consulta a la fuente y generación de imagenes
+    f.write(mss)
+    f.write("'")
+    f.write("\n")
+    f.write("act_mss = '")          #las notificaciones que manda al admin con hora de ejecución.
+    f.write(mss1)
+    f.write("'")
 
 
-# muertos_dia=np.zeros(9)
-# casos_dia=np.zeros(9)
-# for j in range(9):
-#     muertos_dia[j]=data4[j,-1]-data4[j,-2]
-#     casos_dia[j]=data3[j,-1]-data3[j,-2]
+#se guarda un array actualizado con los datos: 
+# casos_dia     
+# muertos_día    
+# vacunados_1    
+# vacunados_2    
 
 
-# estados =  [[casos_dia[0],casos_dia[1],casos_dia[2],casos_dia[3],casos_dia[4],casos_dia[5],casos_dia[6],casos_dia[7],casos_dia[8]],
-#             [muertos_dia[0],muertos_dia[1],muertos_dia[2],muertos_dia[3],muertos_dia[4],muertos_dia[5],muertos_dia[6],muertos_dia[7],muertos_dia[8]],
-#             [var_v1[3,-1],var_v1[2,-1],var_v1[7,-1],var_v1[4,-1],var_v1[6,-1],var_v1[8,-1],var_v1[1,-1],var_v1[0,-1],var_v1[5,-1]],
-#             [var_v2[3,-1],var_v2[2,-1],var_v2[7,-1],var_v2[4,-1],var_v2[6,-1],var_v2[8,-1],var_v2[1,-1],var_v2[0,-1],var_v2[5,-1]]]
+muertos_dia=np.zeros(9)
+casos_dia=np.zeros(9)
+for j in range(9):
+    muertos_dia[j]=data4[j,-1]-data4[j,-2]
+    casos_dia[j]=data3[j,-1]-data3[j,-2]
 
 
-# uac = [y_c[-1],y_v[-1]]
-# np.save('estados.npy',estados)   #los valores de cada día actualizado y mostrar resumen.
-# np.save('fechas.npy',uac)        #Guarda las últimas fechas donde se llenaron las fuentes. 
+estados =  [[casos_dia[0],casos_dia[1],casos_dia[2],casos_dia[3],casos_dia[4],casos_dia[5],casos_dia[6],casos_dia[7],casos_dia[8]],
+            [muertos_dia[0],muertos_dia[1],muertos_dia[2],muertos_dia[3],muertos_dia[4],muertos_dia[5],muertos_dia[6],muertos_dia[7],muertos_dia[8]],
+            [var_v1[3,-1],var_v1[2,-1],var_v1[7,-1],var_v1[4,-1],var_v1[6,-1],var_v1[8,-1],var_v1[1,-1],var_v1[0,-1],var_v1[5,-1]],
+            [var_v2[3,-1],var_v2[2,-1],var_v2[7,-1],var_v2[4,-1],var_v2[6,-1],var_v2[8,-1],var_v2[1,-1],var_v2[0,-1],var_v2[5,-1]]]
+
+
+uac = [y_c[-1],y_v[-1]]
+np.save('estados.npy',estados)   #los valores de cada día actualizado y mostrar resumen.
+np.save('fechas.npy',uac)        #Guarda las últimas fechas donde se llenaron las fuentes. 
+
 
 
