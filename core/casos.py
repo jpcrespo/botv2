@@ -72,15 +72,19 @@ for i in range(len(tableau20)):
     r, g, b = tableau20[i]    
     tableau20[i] = (r / 255., g / 255., b / 255.)   
 
-for i in range(1): #len(dep_c)):
-    plt.figure(figsize=(90,60))
-    plt.title('NUEVOS CASOS/DÍA POR 100\'000 HAB EN EL DEPARTAMENTO: '+dep_c[i]+'\n(último reporte en fuente: '+y_c[-1]+')\n',fontsize=150,fontproperties=prop)
-    plt.plot(y_c,var_c[i],label='Nuevos Casos/día',linewidth=5,color=tableau20[0],linestyle='-',marker='.', markersize=15,markeredgecolor='red',markerfacecolor='r')
-    plt.plot(y_c,var_mc[i],label='Promedio 7 días',linewidth=15,color=tableau20[1],linestyle='-')
-    plt.plot(y_c,var_m[i],label='Fallecimientos/día',linewidth=15,color=tableau20[7],linestyle='-')
-    plt.legend(loc='upper left',fontsize=80)
-    plt.yticks(fontsize=100,fontproperties=prop)
-    plt.xticks(y_c[::28],fontsize=80,rotation=45,fontproperties=prop)
+for i in range(len(dep_c)):
+    fig = plt.figure(figsize=(35,25))
+    #Color del fondo
+    fig.patch.set_facecolor(tableau20[0])
+    plt.axes().patch.set_facecolor(tableau20[0])
+    plt.subplots_adjust(top=0.80)
+    plt.title('NUEVOS CASOS/DÍA POR 100\'000 HAB EN EL DEPARTAMENTO:\n'+dep_c[i]+'\n(último reporte en fuente: '+y_c[-1]+')\n',fontsize=65,fontproperties=prop,color=tableau20[1])
+    plt.plot(y_c,var_c[i],label='Nuevos Casos/día',linewidth=5,color=tableau20[2],linestyle='-',marker='.', markersize=15,markeredgecolor='yellow',markerfacecolor='r')
+    plt.plot(y_c,var_mc[i],label='Promedio 7 días',linewidth=5,color=tableau20[3],linestyle='-')
+    plt.plot(y_c,var_m[i],label='Fallecimientos/día',linewidth=5,color=tableau20[4],linestyle='-')
+    plt.legend(loc='upper left',fontsize=50)
+    plt.yticks(fontsize=50,fontproperties=prop,color=tableau20[1])
+    plt.xticks(y_c[::28],fontsize=35,rotation=45,fontproperties=prop,color=tableau20[1])
     plt.ylim(0,2*np.max(var_mc[i]))  
     plt.ylabel('Casos/día',fontsize=60,fontproperties=prop,color=tableau20[1])
     plt.gca().yaxis.grid(linestyle='--',linewidth=1,dashes=(5,15))
