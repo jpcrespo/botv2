@@ -69,17 +69,3 @@ def getMessage():
 
 
 
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-15:39'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-15:39'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-15:47'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-15:53'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-16:0'
-flag_date = '31/5/2021'
-act_mss = '31/5/2021-18:50'
-flag_date = '31/5/2021'
-act_mss = '31/5/2021-18:50'
