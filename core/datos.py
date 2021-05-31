@@ -1,4 +1,5 @@
 token = '1761111998:AAFQQ-azaksi-Z97gUYGElCzc3jUQoIw2oA'
+tauken = '5191c33b7b0079d23ef33dfee00d6084'
 master = 89650251
 
 messages = [
@@ -68,21 +69,3 @@ def getMessage():
 
 
 
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-15:39'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-15:39'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-15:47'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-15:53'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-16:0'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-17:0'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-17:7'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-17:45'
-flag_date = '30/5/2021'
-act_mss = '30/5/2021-23:36'

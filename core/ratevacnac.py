@@ -90,7 +90,7 @@ nac_v2 = mm_v2[0]+mm_v2[1]+mm_v2[2]+mm_v2[3]+mm_v2[4]+mm_v2[5]+mm_v2[6]+mm_v2[7]
 
 bol = mpimg.imread('bol.jpg')
 imagebox = OffsetImage(bol,zoom=1)
-firma = AnnotationBbox(imagebox,(len(y_v)/2,300))
+firma = AnnotationBbox(imagebox,(len(y_v)/2,30))
 
 
 fig = plt.figure(figsize=(35,25))

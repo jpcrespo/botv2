@@ -23,6 +23,8 @@ sys.path.insert(0, 'core/')
 import datos
 from datos import *
 
+import pyowm
+
 
 estados = np.load('core/estados.npy',allow_pickle='TRUE')
 fechas = np.load('core/fechas.npy',allow_pickle='TRUE')
@@ -42,10 +44,11 @@ else:
 
 
 
-commands = {'start'		:	'Inicia el bot',
-            'thanks'	:	'Agradecimientos y referencias',
-            'help' 		:	'Información de uso',
-            'exec' 		:	'Terminal (Only Admin)'}
+commands = {'start'	 :	'Inicia el bot',
+            'thanks'	 :	'Agradecimientos y referencias',
+            'help' 		 :	'Información de uso',
+            'exec' 		 :	'Terminal (Only Admin)'
+            'tiempo'    :  'Tiempo y temperatura ambiente'}
 
 #Comandos que el bot contiene para operar. chequear entre las opciones
 #que contiene el fatherbot para desplegar los comandos 
@@ -134,6 +137,17 @@ bot.set_update_listener(listener)
 # =======================================
 # = Flujo de trabajo y comandos del Bot =
 # =======================================
+
+
+@bot.message_handler(commands=['tiempo'])
+def tiempo_ow(m):
+    cid = m.chat.id
+    userStep[cid] = 0
+    owm = pyowm.OWM(tauken)
+    mgr = owm.weather_manager()
+    sf = mgr.weather_at_place('La Paz, Bolivia')
+    w = sf.weather
+    bot.send_message(cid,'Temperatura en La Paz: '+str(w.temperature('celcius')['temp'])+' ℃',reply_markup=menu)
 
 
 # START
