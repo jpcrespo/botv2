@@ -100,7 +100,7 @@ plt.plot(y_c,nacional1_,label='Nuevos Casos/día',linewidth=5,color=tableau20[2]
 plt.plot(y_c,nacional2_,label='Promedio 7 días',linewidth=5,color=tableau20[3],linestyle='-')
 plt.plot(y_c,nacional3_,label='Fallecimientos/día',linewidth=5,color=tableau20[4],linestyle='-')
 plt.legend(loc='upper left',fontsize=50)
-plt.ylim(0,np.max(nacional2_)+5)  
+#plt.ylim(0,np.max(nacional2_)+5)  
 plt.yticks(fontsize=50,fontproperties=prop,color=tableau20[1])
 plt.xticks(y_c[::30],fontsize=35,rotation=45,fontproperties=prop,color=tableau20[1])
 plt.ylabel('Casos/día',fontsize=60,fontproperties=prop,color=tableau20[1])

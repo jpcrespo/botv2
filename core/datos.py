@@ -1,4 +1,5 @@
 token = '1761111998:AAFQQ-azaksi-Z97gUYGElCzc3jUQoIw2oA'
+tauken = '5191c33b7b0079d23ef33dfee00d6084'
 master = 89650251
 
 messages = [
@@ -78,3 +79,7 @@ flag_date = '30/5/2021'
 act_mss = '30/5/2021-15:53'
 flag_date = '30/5/2021'
 act_mss = '30/5/2021-16:0'
+flag_date = '31/5/2021'
+act_mss = '31/5/2021-18:50'
+flag_date = '31/5/2021'
+act_mss = '31/5/2021-18:50'

@@ -46,7 +46,7 @@ for j in range(9):
     var_mm[j,0]=(mean_dc[j,0]/c_dep[j])
     for i in range(1,len(data3[0])):
         var_mc[j,i]=(mean_dc[j,i]-mean_dc[j,i-1])/c_dep[j]
-        var_mm[j,i]=(mean_dm[j,i]-mean_dm[j,i-1])/c_dep[j]
+        var_mm[j,i]=np.abs(mean_dm[j,i]-mean_dm[j,i-1])/c_dep[j]
 
 # plt.style.use('dark_background')
 
