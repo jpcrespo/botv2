@@ -47,7 +47,7 @@ else:
 commands = {'start'	 :	'Inicia el bot',
             'thanks'	 :	'Agradecimientos y referencias',
             'help' 		 :	'Información de uso',
-            'exec' 		 :	'Terminal (Only Admin)'
+            'exec' 		 :	'Terminal (Only Admin)',
             'tiempo'    :  'Tiempo y temperatura ambiente'}
 
 #Comandos que el bot contiene para operar. chequear entre las opciones
@@ -139,17 +139,6 @@ bot.set_update_listener(listener)
 # =======================================
 
 
-@bot.message_handler(commands=['tiempo'])
-def tiempo_ow(m):
-    cid = m.chat.id
-    userStep[cid] = 0
-    owm = pyowm.OWM(tauken)
-    mgr = owm.weather_manager()
-    sf = mgr.weather_at_place('La Paz, Bolivia')
-    w = sf.weather
-    bot.send_message(cid,'Temperatura en La Paz: '+str(w.temperature('celcius')['temp'])+' ℃',reply_markup=menu)
-
-
 # START
 @bot.message_handler(commands=['start'])
 def command_start(m):
@@ -220,7 +209,16 @@ def command_exec(m):
     bot.send_message(cid,'Menú principal:',reply_markup=menu)
 
 
-
+@bot.message_handler(commands=['tiempo'])
+def tiempo_ow(m):
+    cid = m.chat.id
+    userStep[cid] = 0
+    owm = pyowm.OWM(tauken)
+    mgr = owm.weather_manager()
+    sf = mgr.weather_at_place('La Paz, Bolivia')
+    w = sf.weather
+    mssa='Temperatura en La Paz: '+str(w.temperature('celsius')['temp'])+' ℃'
+    bot.send_message(cid,mssa,reply_markup=menu)
 
 
 

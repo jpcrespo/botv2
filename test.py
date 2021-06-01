@@ -7,11 +7,4 @@ sf = mgr.weather_at_place('la paz, Bolivia')
 
 w = sf.weather
 # ax=w.temperature('celsius')
-print(w.temperature('celsius')['temp'])
-print(w.detailed_status)
-sf = mgr.weather_at_place('cochabamba, Bolivia')
-
-w = sf.weather
-
 print(w.temperature('celsius'))
-print(w.detailed_status)
