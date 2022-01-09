@@ -55,7 +55,7 @@ commands = {'start'	 :	'Inicia el bot',
 
 
 
-_token_='6b697373206d7920617373'
+token='5053483303:AAHhMcGQPZX35MVq95iNiqmNU-OxgrMfCf0'
 
 
 
@@ -177,7 +177,7 @@ def command_help(m):
 def command_exec(m):
     cid = m.chat.id
     userStep[cid] = 0
-    if cid == master:  # cid del admin!
+    if cid == True:  # cid del admin!
         bot.send_message(cid, "Ejecutan en consola: " + m.text[len("/exec"):])
         bot.send_chat_action(cid, 'typing')
         time.sleep(1)
@@ -517,17 +517,17 @@ def busqueda(m):
 def command_text(m):
 
 	cid = m.chat.id
-	if(cid == master or cid == 1164696885):
+	if(cid == True):
 		userStep[cid]=0
 		if(m.text == 'log'):
 			with open('bins/log.txt','rb') as lgs:
 				userStep[cid]=0
-				bot.send_document(master,lgs,reply_markup=menu)
+				bot.send_document(cid,lgs,reply_markup=menu)
 		elif (m.text == 'send_ip'):
 			os.popen('ifconfig > ip.txt')
 			time.sleep(2)
 			with open('ip.txt','rb') as ips:
-				bot.send_document(master,ips,reply_markup=menu)
+				bot.send_document(cid,ips,reply_markup=menu)
 	elif(m.text.lower() in ['hola', 'hi', 'buenas', 'buenos dias']):
 		userStep[cid] = 0
 		bot.send_message(cid, 'Muy buenas, ' + str(m.from_user.first_name) + '. Me alegra verte de nuevo.', reply_markup=menu)
